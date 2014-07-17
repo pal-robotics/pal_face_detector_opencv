@@ -178,7 +178,7 @@ void FaceDetector::publishDebugImage(const cv::Mat& img,
   }
 
   if ( imgDebug.channels() == 3 && imgDebug.depth() == CV_8U )
-    _cvImg.encoding = sensor_msgs::image_encodings::BGR8;
+    _cvImg.encoding = sensor_msgs::image_encodings::RGB8;
 
   else if ( imgDebug.channels() == 1 && imgDebug.depth() == CV_8U )
     _cvImg.encoding = sensor_msgs::image_encodings::MONO8;
@@ -249,6 +249,8 @@ void FaceDetector::detectFaces(const cv::Mat& img,
 
   cv::cvtColor(img, imgGray, CV_BGR2GRAY);
 
+  //int64 start = cvGetTickCount();
+
   _faceClassifier.detectMultiScale(imgGray,
                                    detections,
                                    1.1,           //scale factor
@@ -256,6 +258,10 @@ void FaceDetector::detectFaces(const cv::Mat& img,
                                    0, //CV_HAAR_DO_CANNY_PRUNING,
                                    _minFaceSize,
                                    _maxFaceSize);
+
+  //int64 stop = cvGetTickCount();
+
+  //ROS_INFO_STREAM("Elapsed time: " << (stop - start)/(cvGetTickFrequency()*1000.0) << " ms");
 }
 
 int main(int argc, char **argv)
