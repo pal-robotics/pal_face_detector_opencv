@@ -13,9 +13,9 @@ find_package(catkin REQUIRED COMPONENTS
 # Flags ##
 ##########
 
-add_definitions(-DPAL_MODULE_NAME=\"VISION\")
-add_definitions(-DPAL_PROJECT_NAME=\"${PROJECT_NAME}\")
-add_definitions(-DPAL_LIBRARY_NAME=\"${PROJECT_NAME}\")
+#add_definitions(-DPAL_MODULE_NAME=\"VISION\")
+#add_definitions(-DPAL_PROJECT_NAME=\"${PROJECT_NAME}\")
+#add_definitions(-DPAL_LIBRARY_NAME=\"${PROJECT_NAME}\")
 
 ###################################
 ## catkin specific configuration ##
