@@ -37,3 +37,14 @@ add_executable(pal_face_detector_opencv src/face_detector.cpp)
 target_link_libraries(pal_face_detector_opencv ${catkin_LIBRARIES})
 add_dependencies(pal_face_detector_opencv pal_detection_msgs_generate_messages_cpp)
 
+
+#############
+## Install ##
+#############
+
+install(TARGETS pal_face_detector_opencv
+        RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
+install(DIRECTORY launch config 
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+        USE_SOURCE_PERMISSIONS)
