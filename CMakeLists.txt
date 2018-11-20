@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   roscpp
 )
+find_package(OpenCV REQUIRED)
 
 ##########
 # Flags ##
@@ -26,7 +27,7 @@ catkin_package(
   CATKIN_DEPENDS sensor_msgs pal_detection_msgs
 )
 
-include_directories(${catkin_INCLUDE_DIRS})
+include_directories(SYSTEM ${catkin_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 
 ###########
 ## Build ##
@@ -34,8 +35,8 @@ include_directories(${catkin_INCLUDE_DIRS})
 
 ## Declare a cpp executable
 add_executable(pal_face_detector_opencv src/face_detector.cpp)
-target_link_libraries(pal_face_detector_opencv ${catkin_LIBRARIES})
 add_dependencies(pal_face_detector_opencv pal_detection_msgs_generate_messages_cpp)
+target_link_libraries(pal_face_detector_opencv ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 
 #############
